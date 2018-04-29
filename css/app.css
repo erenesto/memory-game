@@ -1,0 +1,121 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #8494a2;
+    /* Background pattern from Subtle Patterns */
+    font-family: 'Raleway', cursive;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+#deck {
+    width: 532px;
+    min-height: 446px;
+    background: transparent;
+    padding: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#deck .card {
+    height: 100px;
+    width: 100px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    margin-bottom: 20px;
+    transform: rotateY(180deg);
+    transition: all .3s ease;
+}
+
+#deck .card .card-img {
+    display: none;
+    width: 50%;
+}
+
+#deck .card.open {
+    transform: rotateY(0deg);
+    background: #f9f9f9;
+    cursor: default;
+}
+
+#deck .card.open .card-img {
+    display: block;
+}
+
+#deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}
+
+#deck .card.unmatch {
+    cursor: default;
+    background: #cc3102;
+    font-size: 33px;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
