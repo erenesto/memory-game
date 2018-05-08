@@ -17,10 +17,10 @@ body {
 }
 
 body {
-    background: #8494a2;
+    background: #fafafa;
     /* Background pattern from Subtle Patterns */
     font-family: 'Raleway', cursive;
-    color: #fff;
+    color: rgb(66, 78, 95);
 }
 
 .container {
@@ -31,22 +31,50 @@ body {
     height: 100%;
 }
 
-h1 {
-    font-weight: 300;
-}
+
 
 /*
  * Styles for the deck of cards
  */
 
+ #startScreen {
+    text-align: center;
+}
+
+button {
+    background-color: white;
+    color: #2e3d49;
+    border: 2px solid #2e3d49;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2e3d49;
+    color: white;
+}
+
+button:focus {
+    outline: none;
+}
+
+#main {
+    display: none;
+}
+
 #deck {
-    width: 532px;
-    min-height: 446px;
+    min-height: 350px;
     background: transparent;
     padding: 32px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -64,6 +92,16 @@ h1 {
     margin-bottom: 20px;
     transform: rotateY(180deg);
     transition: all .3s ease;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+#deck.easy,
+#deck.medium {
+    max-width: 496px;
+}
+#deck.hard {
+    max-width: 712px;
 }
 
 #deck .card .card-img {
@@ -83,13 +121,13 @@ h1 {
 
 #deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #03d737;
     font-size: 33px;
 }
 
 #deck .card.unmatch {
     cursor: default;
-    background: #cc3102;
+    background: #ee0707;
     font-size: 33px;
 }
 
@@ -100,22 +138,25 @@ h1 {
 .score-panel {
     text-align: left;
     width: 345px;
-    margin-bottom: 10px;
+    margin: 0 auto;
 }
 
 .score-panel .stars {
-    margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    min-width:55px;
 }
 
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
-
+.score-panel .stars li i {
+    color: orange;
+}
 .score-panel .restart {
     float: right;
     cursor: pointer;
 }
+

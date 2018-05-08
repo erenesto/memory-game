@@ -18,33 +18,40 @@
         <header>
             <h1>Matching Game</h1>
         </header>
-        <!-- scores  -->
-        <section class="score-panel">
-            <ul class="stars">
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-            </ul>
 
-            <span class="moves">0</span> Moves
-
-            <div class="restart">
-                <i class="fa fa-repeat"></i>
+        <section id="startScreen">
+            <h2>Please choose a game level</h2>
+            <div>
+                <button id="easyBtn">easy</button>
+                <button id="medBtn">medium</button>
+                <button id="hardBtn">hard</button>
             </div>
         </section>
 
-        <!-- board -->
-        <section>
-            <ul id='deck'>
+        <main id="main">
+            <!-- scores  -->
+            <section class="score-panel">
+                <ul class="stars">
 
-            </ul>
-        </section>
+                </ul>
+
+                <span class="moves">No</span> Move(s)
+
+                <div class="restart">
+                    <i class="fa fa-repeat"></i>
+                </div>
+            </section>
+
+            <!-- board -->
+            <section>
+                <ul id='deck'>
+
+                </ul>
+            </section>
+        </main>
+
+
+
 
 
     </div>

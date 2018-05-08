@@ -44,12 +44,18 @@ let secondClick = {};
 let clickedCards = [];
 let pairs = 8;
 let stars = 3;
-let matches;
 let started;
 let moves = 0;
 let timer;
 let poor;
 let bad;
+const main = document.querySelector("#main");
+const deck = document.querySelector("#deck");
+const startScreen = document.querySelector("#startScreen");
+const easyBtn = document.querySelector("#easyBtn");
+const medBtn = document.querySelector("#medBtn");
+const hardBtn = document.querySelector("#hardBtn");
+const starsDiv = document.querySelector('.stars');
 
 
 class Card {
@@ -63,6 +69,30 @@ class Card {
   }
 }
 
+const gameLevel = function (level) {
+  pairs = levels[level].pairs;
+  poor = levels[level].poor;
+  bad = levels[level].bad;
+  deck.classList.remove("easy", "medium", "hard");
+  deck.classList.add(levels[level].type);
+}
+
+easyBtn.onclick = () => {
+  startScreen.style.display = 'none';
+  main.style.display = 'block';
+  start(cardData, "easy");
+}
+medBtn.onclick = () => {
+  startScreen.style.display = 'none';
+  main.style.display = 'block';
+  start(cardData, "medium");
+}
+hardBtn.onclick = () => {
+  startScreen.style.display = 'none';
+  main.style.display = 'block';
+  start(cardData, "hard");
+}
+
 const trimArray = array => {
   let newArray = array.slice();
   // trim array as needed
@@ -73,10 +103,10 @@ const trimArray = array => {
   return newArray;
 };
 
-const makeCard = function(data) {
+const makeCard = function(data, level) {
   const cardsArr = [];
 
-  let trimmedArr = trimArray(data);
+  let trimmedArr = trimArray(data, level);
 
   trimmedArr.forEach(card => {
     cardsArr.push(new Card(card, 1));
@@ -92,6 +122,22 @@ const displayCardsOnBoard = function(cardsArr) {
   });
 }
 
+const ratings = function() {
+  let starIcons = `<li>
+    <i class="fa fa-star"></i>
+  </li>
+  <li class="bad">
+    <i class="fa fa-star"></i>
+  </li>
+  <li class="poor">
+    <i class="fa fa-star"></i>
+  </li>`;
+
+  starsDiv.innerHTML = starIcons;
+
+}
+
+
 
 const clickOnCard = function(cardsArr) {
   cardsArr.forEach(card => {
@@ -99,7 +145,6 @@ const clickOnCard = function(cardsArr) {
 
     clickedOne.onclick = function clickCardEvent() {
       if(clickedCards.length < 2) {
-        console.log(card);
         let byId = document.getElementById(`${card.listId}`);
         if(!firstClick.id) {
           firstClick = card;
@@ -107,12 +152,17 @@ const clickOnCard = function(cardsArr) {
           byId.classList.add('open');
           moves++;
           document.querySelector('.moves').textContent = moves;
+          if (moves > poor )  {
+            document.querySelector('.poor').style.display ='none';
+          }
+          if (moves > bad) {
+            document.querySelector('.bad').style.display ='none';
+          }
           return;
         } else if(firstClick.id && !secondClick.id && firstClick.listId !== card.listId) {
           secondClick = card;
           clickedCards.push(card);
           byId.classList.add('open');
-
           if(secondClick.id && firstClick.id && firstClick.id === secondClick.id) {
             //match
             document.getElementById(`${firstClick.listId}`).classList.add('match');
@@ -135,14 +185,14 @@ const clickOnCard = function(cardsArr) {
                 if(clickedCards.length === 2) {
                   clickedCards = [];
                 }
-              }, 1000);
+              }, 700);
           }
         }
       }
     };
   });
-}
 
+}
 // Shuffle function from http://stackoverflow.com/a/2450976
 const shuffle = function (array) {
   var currentIndex = array.length,
@@ -159,10 +209,11 @@ const shuffle = function (array) {
   return array;
 }
 
-const start = function (cards) {
-  let cardArray = makeCard(cardData);
+const start = function (cards, level) {
+  gameLevel(level);
+  let cardArray = makeCard(cardData, level);
   shuffle(cardArray);
   displayCardsOnBoard(cardArray);
   clickOnCard(cardArray);
+  ratings();
 }
-start(cardData);
