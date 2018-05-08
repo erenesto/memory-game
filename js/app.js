@@ -114,6 +114,7 @@ const checkMatches = function(card) {
 
   }
 
+
   if(secondClick.id && firstClick.id !== secondClick.id) {
     unmatch();
   } else {
