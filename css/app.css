@@ -39,6 +39,7 @@ body {
 
  #startScreen {
     text-align: center;
+    display: none;
 }
 
 button {
@@ -76,6 +77,7 @@ button:focus {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
 }
 
 #deck .card {
@@ -155,8 +157,45 @@ button:focus {
 .score-panel .stars li i {
     color: orange;
 }
-.score-panel .restart {
+.score-panel .restart,
+.score-panel .continue,
+.score-panel .pause,
+.score-panel .new-game {
     float: right;
     cursor: pointer;
+    padding: 0 5px;
+}
+
+.score-panel .continue {
+    display: none;
+}
+
+.score-panel .new-game {
+    display: none;
+}
+
+.paused {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 54px;
+}
+.paused span {
+    background: #f9f9f9;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 9999;
+    padding: 50px 0;
+}
+
+#timer {
+    text-align: center;
+    padding: 10px 0 0;
 }
 

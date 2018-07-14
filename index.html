@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="css/vex.css">
+    <link rel="stylesheet" href="css/vex-theme-flat-attack.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 
@@ -34,12 +36,24 @@
                 <ul class="stars">
 
                 </ul>
-
                 <span class="moves">No</span> Move(s)
 
-                <div class="restart">
-                    <i class="fa fa-repeat"></i>
+                <div class="pause">
+                    Pause <i class="fa fa-pause"></i>
                 </div>
+                <div class="continue">
+                        Continue <i class="fa fa-play"></i>
+                    </div>
+                <div class="restart">
+                    Restart <i class="fa fa-repeat"></i>
+                </div>
+                <div class="new-game">
+                        New Game <i class="fa fa-play"></i>
+                    </div>
+            </section>
+
+            <section>
+                <div id="timer">00:00:00</div>
             </section>
 
             <!-- board -->
@@ -50,12 +64,10 @@
             </section>
         </main>
 
-
-
-
-
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="js/easytimer.min.js"></script>
+    <script src="js/vex.combined.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 
