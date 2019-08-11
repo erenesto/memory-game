@@ -2,7 +2,7 @@
 Memory Game project with pure JavaScript for Udacity FED Nanodegree Program
 
 ### You can play it in
-* http://erenguldas.com/portfolio/memory-game/
+* https://erenesto.github.io/memory-game/
 
 ### How to play
 
